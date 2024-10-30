@@ -13,3 +13,31 @@ docker run -p 27017_27017 -v /dockerdata/mongo/:/data/db -d mongo
 inside C:\Users\mitno I created a folder named temp, and then:
 
 - docker run --name aldo2-mysql -e MYSQL_ALLOW_EMPTY_PASSWORD=yes -v /temp:/var/lib/mysql -p 3306:3306 -d mysql
+
+
+# Centos with java#
+run image
+- docker run -d centos tail -f /dev/null
+get the name:
+  CONTAINER ID   IMAGE     COMMAND               CREATED         STATUS         PORTS     NAMES
+  eba557f3c4f6   centos    "tail -f /dev/null"   4 seconds ago   Up 3 seconds             unruffled_bardeen
+
+execute a terminal inside centOS:
+- docker exec -it unruffled_bardeen bash
+unruffled_bardeen is the name of the container
+
+try:
+-yum install java
+if it fails
+
+try:
+
+FROM centos
+
+cd /etc/yum.repos.d/
+sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*
+sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*
+
+yum -y install java
+
+
