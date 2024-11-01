@@ -41,3 +41,14 @@ sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /
 yum -y install java
 
 
+#Install MySQL
+https://dev.mysql.com/downloads/file/?id=534098
+
+On Centos
+- yum update
+- yum install wget
+- wget https://dev.mysql.com/get/mysql80-community-release-el7-3.noarch.rpm
+- get the .rpm name file and:
+- rpm -ivh mysql80-community-release-el7-3.noarch.rpm
+- yum install mysql-server
+
